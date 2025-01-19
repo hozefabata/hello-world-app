@@ -13,11 +13,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Step 1: Checkout code
+      # Step 1: Checkout the code
       - name: Checkout Code
         uses: actions/checkout@v3
 
-      # Step 2: Set up Python environment
+      # Step 2: Set up Python
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
@@ -41,7 +41,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Step 1: Checkout code
+      # Step 1: Checkout the code
       - name: Checkout Code
         uses: actions/checkout@v3
 
@@ -49,9 +49,10 @@ jobs:
       - name: Log in to Docker Hub
         run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
 
-      # Step 3: Build and Push Docker Image
+      # Step 3: Build and push Docker image
       - name: Build and Push Docker Image
         run: |
           docker build -t hello-world-app .
           docker tag hello-world-app:latest <your-dockerhub-username>/hello-world-app:latest
           docker push <your-dockerhub-username>/hello-world-app:latest
+
